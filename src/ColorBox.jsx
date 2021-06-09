@@ -33,7 +33,7 @@ class ColorBox extends Component {
                 <CopyToClipboard text={background} onCopy={ this.changeCopyState }>
                     <button className='copy-button'>Copy</button>
                 </CopyToClipboard>
-                <span>More</span>
+                <span className='see-more'>More</span>
             </div>
             
         )

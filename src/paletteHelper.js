@@ -1,6 +1,44 @@
 import chroma from 'chroma-js'
 const levels = [900, 800, 700, 600, 500, 400, 300, 200, 100, 50]
 
+function RGBToHSL(color) {
+  const rgb = color.split(',')
+  let r = parseInt(rgb[0])
+  let g = parseInt(rgb[1])
+  let b = parseInt(rgb[2])
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  let cmin = Math.min(r,g,b),
+      cmax = Math.max(r,g,b),
+      delta = cmax - cmin,
+      h = 0,
+      s = 0,
+      l = 0;
+  if (delta == 0)
+    h = 0;
+  else if (cmax == r)
+    h = ((g - b) / delta) % 6;
+  else if (cmax == g)
+    h = (b - r) / delta + 2;
+  else
+    h = (r - g) / delta + 4;
+
+  h = Math.round(h * 60);
+
+  if (h < 0)
+      h += 360;
+    l = (cmax + cmin) / 2;
+
+    s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+
+    s = +(s * 100).toFixed(1);
+    l = +(l * 100).toFixed(1);
+  
+    return "hsl(" + h + "," + s + "%," + l + "%)";
+  
+}
+
 function generatePalette(starterPalette) {
   let newPalette = {
     paletteName: starterPalette.paletteName,
@@ -20,9 +58,10 @@ function generatePalette(starterPalette) {
         hex: scale[i],
         rgb: chroma(scale[i]).css(),
         rgba: chroma(scale[i])
-            .css()
-            .replace('rgb', 'rgba')
-            .replace(')', ',1.0)')
+          .css()
+          .replace("rgb", "rgba")
+          .replace(")", ",1.0)"),
+        hsl: RGBToHSL(chroma(scale[i]).css().replace('rgb(','').replace(')',''))
       })
     }
     
