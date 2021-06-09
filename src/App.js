@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Palette from './components/palette'
+import PaletteList from './components/palette-list'
 import seedPalette from './components/palette/seedPalette'
 import { generatePalette } from './components/palette/paletteHelper'
 
@@ -14,7 +15,7 @@ class App extends Component {
     const rP = Math.floor(Math.random() * seedPalette.length) 
     return (
       <Switch>
-        <Route exact path='/' render={() => <h1>Palette list goes here</h1>} />
+        <Route exact path='/' render={() => <PaletteList palettes={seedPalette} /> } />
         <Route 
           exact
           path='/palette/:id'
