@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Palette from './components/palette'
-import MonoPalette from './components/mono-palette'
-import PaletteList from './components/palette-list'
+import MonoPalette from './components/palette/mono'
+import PaletteList from './components/palette/list'
 import seedPalette from './components/palette/seedPalette'
 import { generatePalette } from './components/palette/paletteHelper'
 

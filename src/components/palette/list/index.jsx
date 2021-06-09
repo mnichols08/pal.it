@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MiniPalette from "../mini-palette";
+import MiniPalette from "../mini";
 import { withStyles } from "@material-ui/styles";
 
 const styles = {
