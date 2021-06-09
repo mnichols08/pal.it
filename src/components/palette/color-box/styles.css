@@ -33,11 +33,9 @@
     color: white;
     text-transform: uppercase;
     border: none;
-  }
-  
-  .back-button {
     text-decoration: none;
   }
+
   .copy-button {
     opacity: 0
   }
@@ -57,6 +55,14 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     font-size: 12px;
+  }
+
+  .light-text {
+    color: white;
+  }
+
+  .ColorBox .dark-text {
+    color: rgba(0, 0, 0, 0.5);
   }
   
   .see-more {
