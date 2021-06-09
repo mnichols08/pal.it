@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import Palette from './palette'
+import Palette from './Palette'
 import seedPalette from './seedPalette'
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Palette {...seedPalette[4] }/>
+        <Palette {...seedPalette[5] }/>
       </div>
     )
   }
