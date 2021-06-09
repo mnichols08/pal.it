@@ -5,9 +5,10 @@ import { generatePalette } from "./paletteHelper"
 
 class App extends Component {
   render() {
+    const rP = Math.floor(Math.random() * seedPalette.length) 
     return (
       <div>
-        <Palette palette={generatePalette(seedPalette[1])} />
+        <Palette palette={generatePalette(seedPalette[rP])} />
       </div>
     )
   }
