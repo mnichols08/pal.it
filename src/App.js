@@ -5,6 +5,11 @@ import seedPalette from './components/palette/seedPalette'
 import { generatePalette } from './components/palette/paletteHelper'
 
 class App extends Component {
+  findPalette(id) {
+    return seedPalette.find(function(palette) {
+      return palette.id === id
+    })
+  }
   render() {
     const rP = Math.floor(Math.random() * seedPalette.length) 
     return (
@@ -13,9 +18,12 @@ class App extends Component {
         <Route 
           exact
           path='/palette/:id'
-          render={() => <h1>Individual Palette</h1>}
+          render={routeProps => (
+            <Palette palette={generatePalette(
+              this.findPalette(routeProps.match.params.id)
+            )} />
+          )}
         />
-        {/* <Palette palette={generatePalette(seedPalette[rP])} /> */}
       </Switch>
     )
   }
