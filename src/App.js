@@ -12,10 +12,9 @@ class App extends Component {
     })
   }
   render() {
-    const rP = Math.floor(Math.random() * seedPalette.length) 
     return (
       <Switch>
-        <Route exact path='/' render={() => <PaletteList palettes={seedPalette} /> } />
+        <Route exact path='/' render={routeProps => <PaletteList palettes={seedPalette} {...routeProps } /> } />
         <Route 
           exact
           path='/palette/:id'
@@ -24,6 +23,11 @@ class App extends Component {
               this.findPalette(routeProps.match.params.id)
             )} />
           )}
+        />
+        <Route 
+        exact 
+        path='/palette/:paletteId/:colorId'
+        render={() => <h1>single color page</h1>}
         />
       </Switch>
     )
