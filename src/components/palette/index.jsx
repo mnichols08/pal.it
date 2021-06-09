@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import ColorBox from './ColorBox.jsx'
-import Navbar from './Navbar.jsx'
+import ColorBox from '../color-box'
+import Navbar from '../navbar'
 
-import './Palette.css'
+import './styles.css'
 
 class Palette extends Component {
     constructor(props) {
@@ -19,15 +19,22 @@ class Palette extends Component {
         this.setState({ format: val })
     }
     render() {
-        const { colors } = this.props.palette
+        const { colors, paletteName, emoji } = this.props.palette
         const { level, format } = this.state
         const colorBoxes = colors[level].map(color => 
             (<ColorBox background={color[format]} name={color.name} />) )
         return (
             <div className='Palette'>
                 <Navbar level={ level } changeLevel={ this.changeLevel } handleChange={this.changeFormat} />
-                    <div className='Palette-colors'> { colorBoxes } </div>
-                { /*  FOOTER  */}
+                <div className='Palette-colors'>
+                    { colorBoxes } 
+                </div>
+                <footer className='Palette-footer'>
+                    { paletteName }
+                    <span className='emoji'>
+                        { emoji }
+                    </span>
+                </footer>
             </div>
         )
     }
