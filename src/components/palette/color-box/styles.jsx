@@ -1,3 +1,4 @@
+import { withStyles } from '@material-ui/styles'
 import chroma from 'chroma-js'
 
 const styles = {
@@ -119,4 +120,4 @@ const styles = {
     }
   }
 
-  export default styles
+  export default withStyles(styles)

@@ -1,4 +1,6 @@
-export default {
+import { withStyles } from '@material-ui/styles'
+
+const styles = {
     PaletteFooter: {
         backgroundColor: 'white',
         height: '5vh',
@@ -12,3 +14,5 @@ export default {
         margin: '0 1rem'
     }
 }
+
+export default withStyles(styles)

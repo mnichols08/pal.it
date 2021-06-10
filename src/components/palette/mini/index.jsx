@@ -1,5 +1,4 @@
 import React from 'react'
-import { withStyles } from '@material-ui/styles'
 
 import styles from './styles'
 
@@ -18,4 +17,4 @@ function MiniPalette(props) {
     )
 }
 
-export default withStyles(styles)(MiniPalette)
+export default styles(MiniPalette)

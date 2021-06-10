@@ -1,3 +1,5 @@
+import { withStyles } from '@material-ui/styles'
+
 const styles = {
   Navbar: {
     display: "flex",
@@ -46,4 +48,4 @@ const styles = {
   }
 }
 
-export default styles
+export default withStyles(styles)

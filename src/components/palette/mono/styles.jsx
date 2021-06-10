@@ -1,4 +1,6 @@
-export const styles = {
+import { withStyles } from '@material-ui/styles'
+
+const styles = {
     Palette: {
       height: "100vh",
       display: "flex",
@@ -38,3 +40,5 @@ export const styles = {
       }
     }
   }
+
+  export default withStyles(styles)

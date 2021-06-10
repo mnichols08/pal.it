@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { withStyles } from '@material-ui/styles'
 import ColorBox from '../color-box'
 import Navbar from '../navbar'
 import PaletteFooter from '../footer'
@@ -42,4 +41,4 @@ class Palette extends Component {
     }
 }
 
-export default withStyles(styles)(Palette)
+export default styles(Palette)

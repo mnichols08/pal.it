@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { withStyles } from '@material-ui/styles'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import SnackBar from '@material-ui/core/Snackbar'
@@ -82,4 +81,4 @@ class Navbar extends Component {
     }
 }
 
-export default withStyles(styles)(Navbar)
+export default styles(Navbar)

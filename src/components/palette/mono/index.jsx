@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { withStyles } from '@material-ui/styles'
 import ColorBox from '../color-box'
 import Navbar from '../navbar'
 import PaletteFooter from '../footer'
 
-import { styles } from './styles'
+import styles from './styles'
 
 class MonoPalette extends Component {
     constructor(props) {
@@ -57,4 +56,5 @@ class MonoPalette extends Component {
       )
     }
   }
-  export default withStyles(styles)(MonoPalette)
+
+  export default styles(MonoPalette)

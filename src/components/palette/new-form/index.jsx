@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
-import { withStyles } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/drawer'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import AppBar from '@material-ui/core/AppBar'
@@ -11,7 +10,9 @@ import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import Button from '@material-ui/core/Button'
+import DragBox from '../color-box/drag'
 import { ChromePicker } from 'react-color'
+
 
 import styles from './styles'
 
@@ -93,15 +94,13 @@ class NewPaletteForm extends Component {
                     [classes.contentShift]: open
                 })}>
                     <div className={classes.drawerHeader} />
-                    <ul>
                         {this.state.colors.map(color => (
-                            <li style={{ backgroundColor: color }}>{ color }</li>
+                            <DragBox color={ color } />
                         ))}
-                    </ul>
                 </main>
             </div>
         )
     }
 }
 
-export default withStyles(styles)(NewPaletteForm)
+export default styles(NewPaletteForm)

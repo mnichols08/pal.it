@@ -1,3 +1,5 @@
+import { withStyles } from '@material-ui/styles'
+
 const styles = {
   root: {
     backgroundColor: "blue",
@@ -32,4 +34,4 @@ const styles = {
   }
 }
 
-  export default styles
+  export default withStyles(styles)

@@ -1,4 +1,3 @@
-import { withStyles } from '@material-ui/styles'
 import React from 'react'
 
 import styles from './styles'
@@ -13,4 +12,4 @@ function PaletteFooter(props) {
     )
 }
 
-export default withStyles(styles)(PaletteFooter)
+export default styles(PaletteFooter)

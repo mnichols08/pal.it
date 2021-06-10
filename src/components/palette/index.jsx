@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import { Link } from 'react-router-dom'
 import MiniPalette from "./mini"
-import { withStyles } from "@material-ui/styles"
 
 import styles from './styles'
 
@@ -32,4 +31,4 @@ class PaletteIndex extends Component {
     );
   }
 }
-export default withStyles(styles)(PaletteIndex)
+export default styles(PaletteIndex)

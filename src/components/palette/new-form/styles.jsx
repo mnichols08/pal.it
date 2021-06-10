@@ -1,3 +1,4 @@
+import { withStyles } from '@material-ui/core/styles'
 const drawerWidth = 240
 const styles = theme => ({
     root: {
@@ -14,7 +15,7 @@ const styles = theme => ({
         marginLeft: drawerWidth,
         transition: theme.transitions.create(['margin', 'width'], {
             easing: theme.transitions.easeOut,
-            durations: theme.transitions.duration.enteringScreen
+            duration: theme.transitions.duration.enteringScreen
         })
     },
     menuButton: {
@@ -40,7 +41,7 @@ const styles = theme => ({
     },
     content: {
         flexGrow: 1,
-        padding: theme.spacing.unit * 3,
+        padding: theme.spacing(3),
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.easeOut,
             duration: theme.transitions.duration.enteringScreen
@@ -56,4 +57,4 @@ const styles = theme => ({
       }
 })
 
-export default styles
+export default withStyles(styles, { withTheme: true })
