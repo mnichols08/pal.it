@@ -11,8 +11,9 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import Button from '@material-ui/core/Button'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
-import DragBox from '../color-box/drag'
+import DragList from '../color-box/drag-list'
 import { ChromePicker } from 'react-color'
+import { arrayMove } from 'react-sortable-hoc'
 
 import styles from './styles'
 
@@ -78,6 +79,11 @@ class NewPaletteForm extends Component {
     removeColor(name) {
         this.setState({
             colors: this.state.colors.filter(color => color.name !== name)
+        })
+    }
+    onSortEnd = ({ oldIndex, newIndex }) => {
+        this.setState(({ colors }) => {
+            colors: arrayMove(colors, oldIndex, newIndex)
         })
     }
     render() {
@@ -156,14 +162,12 @@ class NewPaletteForm extends Component {
                     [classes.contentShift]: open
                 })}>
                     <div className={classes.drawerHeader} />
-                        {this.state.colors.map(color => (
-                            <DragBox
-                                key={ color.name }
-                                color={ color.color }
-                                name={ color.name }
-                                handleClick={() => this.removeColor(color.name)}
+                            <DragList
+                                colors={this.state.colors}
+                                removeColor={this.removeColor}
+                                axis='xy'
+                                onSortEnd={this.onSortEnd}
                             />
-                        ))}
                 </main>
             </div>
         )
