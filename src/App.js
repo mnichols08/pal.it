@@ -4,7 +4,7 @@ import Palette from './components/palette/component'
 import MonoPalette from './components/palette/mono'
 import PaletteIndex from './components/palette'
 import seedPalette from './components/palette/seed-palette'
-import NewPaletteForm from './components/palette/new-form'
+import NewPaletteForm from './components/palette/new'
 import { generatePalette } from './components/palette/palette-helper'
 
 class App extends Component {
