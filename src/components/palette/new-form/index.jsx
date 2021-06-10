@@ -10,6 +10,8 @@ import Divider from'@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import Button from '@material-ui/core/Button'
+import { ChromePicker } from 'react-color'
 
 import styles from './styles'
 
@@ -37,7 +39,7 @@ class NewPaletteForm extends Component {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant='h6' color='inherit' noWrap>
-                            Persistent drawer
+                            Persistent Drawer
                         </Typography>
                     </Toolbar>
                 </AppBar>
@@ -56,6 +58,22 @@ class NewPaletteForm extends Component {
                         </IconButton>
                     </div>
                     <Divider />
+                    <Typography variant='h4'>Design Your pal.it</Typography>
+                    <div>
+                        <Button variant='contained' color='secondary'>
+                            Clear Palette
+                        </Button>
+                        <Button variant='contained' color='primary'>
+                            Random Color
+                        </Button>
+                    </div>
+                    <ChromePicker
+                        color='purple'
+                        onChangeComplete={newColor => console.log(newColor)}
+                    />
+                    <Button variant='contained' color='primary'>
+                        Add Color
+                    </Button>
                 </Drawer>
                 <main className={classNames(classes.content, {
                     [classes.contentShift]: open
