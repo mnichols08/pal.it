@@ -34,7 +34,7 @@ class MonoPalette extends Component {
           key={color.name.replace(/ /g, '')}
           name={color.name}
           background={color[format]}
-          showLink={false}
+          showingFullPalette={false}
         />
       ))
       return (
