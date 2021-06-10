@@ -41,14 +41,12 @@ class MonoPalette extends Component {
         />
       ))
       return (
-        <div className='SingleColorPalette Palette'>
+        <div className={classes.Palette}>
           <Navbar handleChange={this.changeFormat} showingAllColors={false} />
-            <div className={classes.Palette}>
+            <div className={classes.colors}>
               { colorBoxes }
               <div className={classes.goBack}>
-                <Link to={`/palette/${id}`}>
-                  GO BACK
-                </Link>
+                <Link to={`/palette/${id}`}>GO BACK</Link>
               </div>
             </div>
           <PaletteFooter paletteName={paletteName} emoji={emoji} />

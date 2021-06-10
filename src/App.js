@@ -3,20 +3,30 @@ import { Route, Switch } from 'react-router-dom'
 import Palette from './components/palette/component'
 import MonoPalette from './components/palette/mono'
 import PaletteIndex from './components/palette'
-import seedPalette from './components/palette/seed-palette'
+import seed from './components/palette/seed'
 import NewPaletteForm from './components/palette/new'
-import { generatePalette } from './components/palette/palette-helper'
+import { generatePalette } from './components/palette/helper'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { palettes: seed }
+    this.savePalette = this.savePalette.bind(this)
+    this.findPalette = this.findPalette.bind(this)
+  }
   findPalette(id) {
-    return seedPalette.find(function(palette) {
+    
+    return this.state.palettes.find(function(palette) {
       return palette.id === id
     })
+  }
+  savePalette(newPalette) {
+    this.setState({ palettes: [...this.state.palettes, newPalette] })
   }
   render() {
     return (
       <Switch>
-        <Route exact path='/palette/new' render={() => <NewPaletteForm />} />
+        <Route exact path='/palette/new' render={routeProps => <NewPaletteForm savePalette={this.savePalette } palettes={this.state.palettes} {...routeProps } />} />
         <Route
         exact 
         path='/palette/:paletteId/:colorId'
@@ -31,14 +41,21 @@ class App extends Component {
         )}
         />
 
-        <Route exact path='/' render={routeProps => <PaletteIndex palettes={seedPalette} {...routeProps } /> } />
-        <Route 
+        <Route
+          exact
+          path='/'
+          render={routeProps => (
+          <PaletteIndex palettes={this.state.palettes} {...routeProps } />
+        )} />
+        <Route
           exact
           path='/palette/:id'
           render={routeProps => (
-            <Palette palette={generatePalette(
-              this.findPalette(routeProps.match.params.id)
-            )} />
+            <Palette
+              palette={generatePalette(
+                this.findPalette(routeProps.match.params.id)
+              )}
+            />
           )}
         />
       </Switch>

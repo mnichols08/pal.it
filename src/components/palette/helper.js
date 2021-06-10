@@ -38,6 +38,7 @@ function RGBToHSL(color) {
 }
 
 function generatePalette(starterPalette) {
+  console.log(starterPalette)
   let newPalette = {
     paletteName: starterPalette.paletteName,
     id: starterPalette.id,

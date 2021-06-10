@@ -1,5 +1,5 @@
 
-export default [
+const seed = [
   {
     paletteName: "Material UI Colors",
     id: "material-ui-colors",
@@ -242,4 +242,6 @@ export default [
       { name: "ReefEncounter", color: "#079992" }
     ]
   }
-];
+]
+
+export default seed

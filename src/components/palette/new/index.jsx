@@ -21,22 +21,28 @@ class NewPaletteForm extends Component {
         super(props)
         this.state = {
             open: true,
-            currentColor: 'teal',
-            newName: '',
-            colors: [{color: 'blue', name: 'blue' }]
+            currentColor: '#800000',
+            newColorName: '',
+            colors: [{ color: `#${Math.floor(Math.random()*16777215).toString(16)}`, name: 'Random Mam' }],
+            newPaletteName: ''
         }
         this.updateCurrentColor = this.updateCurrentColor.bind(this)
         this.addNewColor = this.addNewColor.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
     componentDidMount() {
         ValidatorForm.addValidationRule('isColorNameUnique', val =>
         this.state.colors.every(
             ({ name }) => name.toLowerCase() !== val.toLowerCase()
         ))
-        ValidatorForm.addValidationRule('isColorUnique', val =>
+        ValidatorForm.addValidationRule('isColorUnique', () =>
         this.state.colors.every(
             ({ color }) => color !== this.state.currentColor
+        ))
+        ValidatorForm.addValidationRule('isPaletteNameUnique', val => 
+        this.props.palettes.every(
+            ({ paletteName }) => paletteName.toLowerCase() !== val.toLowerCase()
         ))
     }
     handleDrawerOpen = () => {
@@ -50,13 +56,24 @@ class NewPaletteForm extends Component {
     }
     addNewColor() {
         const newColor = {
-            color: this.state.currentColor,
-            name: this.state.newName
+            name: this.state.newColorName,
+            color: this.state.currentColor
         }
-        this.setState({ colors: [...this.state.colors, newColor], newName: "" })
+        this.setState({ colors: [...this.state.colors, newColor], newColorName: "" })
     }
     handleChange(e) {
-        this.setState( { newName: e.target.value })
+        this.setState( { [e.target.name]: e.target.value })
+        console.log(this.state)
+    }
+    handleSubmit() {
+        let newName = this.state.newPaletteName
+        const newPalette = {
+            paletteName: newName,
+            id: newName.toLowerCase().replace(/ /g, '-'),
+            colors: this.state.colors,
+        }
+        this.props.savePalette(newPalette)
+        this.props.history.push('/')
     }
     render() {
         const { classes } = this.props
@@ -74,6 +91,19 @@ class NewPaletteForm extends Component {
                         <Typography variant='h6' color='inherit' noWrap>
                             Persistent Drawer
                         </Typography>
+                        <ValidatorForm onSubmit={this.handleSubmit}>
+                            <TextValidator 
+                                label='Palette Name'
+                                value={this.state.newPaletteName}
+                                name='newPaletteName'
+                                onChange={this.handleChange}
+                                validators={['required', 'isPaletteNameUnique']}
+                                errorMessages={['Enter Palette Name', 'Name Already Taken']}
+                            />
+                            <Button variant='contained' color='primary' type='submit'>
+                            Save pal.it
+                            </Button>
+                        </ValidatorForm>
                     </Toolbar>
                 </AppBar>
                 <Drawer
@@ -106,7 +136,8 @@ class NewPaletteForm extends Component {
                     />
                     <ValidatorForm onSubmit={this.addNewColor} ref='form'>
                         <TextValidator
-                            value={this.state.newName}
+                            name='newColorName'
+                            value={this.state.newColorName}
                             onChange={this.handleChange}
                             validators={['required', 'isColorNameUnique', 'isColorUnique']}
                             errorMessages={['Enter a color name', 'Color name must be unique', 'Color already used!']}
