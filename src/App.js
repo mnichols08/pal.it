@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Palette from './components/palette'
+import Palette from './components/palette/component'
 import MonoPalette from './components/palette/mono'
-import PaletteList from './components/palette/list'
-import seedPalette from './components/palette/seedPalette'
-import { generatePalette } from './components/palette/paletteHelper'
+import PaletteIndex from './components/palette'
+import seedPalette from './components/palette/seed-palette'
+import NewPaletteForm from './components/palette/new-form'
+import { generatePalette } from './components/palette/palette-helper'
 
 class App extends Component {
   findPalette(id) {
@@ -15,7 +16,8 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route 
+        <Route exact path='/palette/new' render={() => <NewPaletteForm />} />
+        <Route
         exact 
         path='/palette/:paletteId/:colorId'
         render={routeProps => (
@@ -28,7 +30,8 @@ class App extends Component {
           />
         )}
         />
-        <Route exact path='/' render={routeProps => <PaletteList palettes={seedPalette} {...routeProps } /> } />
+
+        <Route exact path='/' render={routeProps => <PaletteIndex palettes={seedPalette} {...routeProps } /> } />
         <Route 
           exact
           path='/palette/:id'
@@ -38,7 +41,6 @@ class App extends Component {
             )} />
           )}
         />
-        
       </Switch>
     )
   }

@@ -1,45 +1,35 @@
-import React, { Component } from 'react'
-import { withStyles } from '@material-ui/styles'
-import ColorBox from './color-box'
-import Navbar from './navbar'
-import PaletteFooter from './footer'
+import React, { Component } from "react"
+import { Link } from 'react-router-dom'
+import MiniPalette from "./mini"
+import { withStyles } from "@material-ui/styles"
 
 import styles from './styles'
 
-class Palette extends Component {
-    constructor(props) {
-        super(props)
-        this.state = { level: 500, format: 'hex' }
-        this.changeLevel = this.changeLevel.bind(this)
-        this.changeFormat = this.changeFormat.bind(this)
-    }
-    changeLevel(level) {
-        this.setState({ level })
-    }
-    changeFormat(val) {
-        this.setState({ format: val })
-    }
-    render() {
-        const { colors, paletteName, emoji, id } = this.props.palette
-        const { classes } = this.props
-        const { level, format } = this.state
-        const colorBoxes = colors[level].map(color => 
-            (<ColorBox background={color[format]} name={color.name} key={color.id} moreUrl={`/palette/${id}/${color.id}`} showFullPalette />) )
-        return (
-            <div className={classes.Palette}>
-                <Navbar 
-                    level={ level }
-                    changeLevel={ this.changeLevel }
-                    handleChange={this.changeFormat}
-                    showingAllColors
-                />
-                <div className={classes.colors}>
-                    { colorBoxes } 
-                </div>
-                <PaletteFooter paletteName={paletteName} emoji={emoji} />
-            </div>
-        )
-    }
+class PaletteIndex extends Component {
+  goToPalette(id) {
+    this.props.history.push(`/palette/${id}`)
+  }
+  render() {
+    const { palettes, classes } = this.props
+    return (
+      <div className={classes.root}>
+        <div className={classes.container}>
+          <nav className={classes.nav}>
+            <h1>pal.it</h1>
+            <Link to='/palette/new'>Create Palette</Link>
+          </nav>
+          <div className={classes.palettes}>
+            {palettes.map(palette => (
+              <MiniPalette
+                key={palette.id}
+                {...palette}
+                handleClick={() => this.goToPalette(palette.id)}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
-
-export default withStyles(styles)(Palette)
+export default withStyles(styles)(PaletteIndex)
