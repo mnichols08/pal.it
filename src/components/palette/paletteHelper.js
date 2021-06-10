@@ -61,10 +61,9 @@ function generatePalette(starterPalette) {
           .css()
           .replace("rgb", "rgba")
           .replace(")", ",1.0)"),
-        hsl: RGBToHSL(chroma(scale[i]).css().replace('rgb(','').replace(')',''))
+          hsl: RGBToHSL(chroma(scale[i]).css().replace('rgb(','').replace(')','')),
       })
     }
-    
   }
   return newPalette
 }
