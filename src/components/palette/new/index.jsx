@@ -30,6 +30,7 @@ class NewPaletteForm extends Component {
         this.addNewColor = this.addNewColor.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.removeColor = this.removeColor.bind(this)
     }
     componentDidMount() {
         ValidatorForm.addValidationRule('isColorNameUnique', val =>
@@ -63,7 +64,6 @@ class NewPaletteForm extends Component {
     }
     handleChange(e) {
         this.setState( { [e.target.name]: e.target.value })
-        console.log(this.state)
     }
     handleSubmit() {
         let newName = this.state.newPaletteName
@@ -74,6 +74,11 @@ class NewPaletteForm extends Component {
         }
         this.props.savePalette(newPalette)
         this.props.history.push('/')
+    }
+    removeColor(name) {
+        this.setState({
+            colors: this.state.colors.filter(color => color.name !== name)
+        })
     }
     render() {
         const { classes } = this.props
@@ -152,7 +157,12 @@ class NewPaletteForm extends Component {
                 })}>
                     <div className={classes.drawerHeader} />
                         {this.state.colors.map(color => (
-                            <DragBox color={ color.color } name={ color.name } />
+                            <DragBox
+                                key={ color.name }
+                                color={ color.color }
+                                name={ color.name }
+                                handleClick={() => this.removeColor(color.name)}
+                            />
                         ))}
                 </main>
             </div>
