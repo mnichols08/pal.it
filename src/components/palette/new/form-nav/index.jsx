@@ -10,6 +10,8 @@ import IconButton from '@material-ui/core/IconButton'
 import Button from '@material-ui/core/Button'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 
+import styles from './styles'
+
 class PaletteFormNav extends Component {
     constructor(props) {
         super(props)
@@ -68,4 +70,4 @@ class PaletteFormNav extends Component {
     }
 }
 
-export default PaletteFormNav
+export default styles(PaletteFormNav)

@@ -6,7 +6,6 @@ import Divider from'@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import Button from '@material-ui/core/Button'
-import { ValidatorForm } from 'react-material-ui-form-validator'
 import DragList from '../color-box/drag-list'
 import { arrayMove } from 'react-sortable-hoc'
 
@@ -115,7 +114,7 @@ class NewPaletteForm extends Component {
                     <ColorPickerForm 
                         paletteIsFull={paletteIsFull}
                         addNewColor={this.addNewColor}
-                        color={colors}
+                        colors={colors}
                     />
                 </Drawer>
                 <main className={classNames(classes.content, {

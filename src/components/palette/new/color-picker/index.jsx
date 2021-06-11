@@ -6,7 +6,7 @@ import { ChromePicker } from 'react-color'
 class ColorPickerForm extends Component {
     constructor(props) {
         super(props)
-        this.state = { currentColor: '#800000', newColorName: ''}
+        this.state = { currentColor: '#800000', newColorName: '' }
         this.updateCurrentColor = this.updateCurrentColor.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -17,7 +17,7 @@ class ColorPickerForm extends Component {
           ({ name }) => name.toLowerCase() !== value.toLowerCase()
         )
       )
-      ValidatorForm.addValidationRule("isColorUnique", value =>
+      ValidatorForm.addValidationRule("isColorUnique", () =>
         this.props.colors.every(({ color }) => color !== this.state.currentColor)
       )
     }
@@ -38,7 +38,7 @@ class ColorPickerForm extends Component {
         this.setState({ newColorName: '' })
     }
     render() {
-        const { paletteIsFull, handleChange } = this.props
+        const { paletteIsFull } = this.props
         const { currentColor, newColorName } = this.state
         return (
             <div>
@@ -50,7 +50,7 @@ class ColorPickerForm extends Component {
                         <TextValidator
                             name='newColorName'
                             value={newColorName}
-                            onChange={handleChange}
+                            onChange={this.handleChange}
                             validators={['required', 'isColorNameUnique', 'isColorUnique']}
                             errorMessages={['Enter a color name', 'Color name must be unique', 'Color already used!']}
                         />
