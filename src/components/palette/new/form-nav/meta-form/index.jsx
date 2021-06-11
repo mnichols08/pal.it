@@ -17,6 +17,8 @@ class PaletteMetaForm extends Component {
             newPaletteName: ''
         }
         this.handleChange = this.handleChange.bind(this)
+        this.showEmojiPicker = this.showEmojiPicker.bind(this)
+        this.savePalette = this.savePalette.bind(this)
     }
     componentDidMount() {
         ValidatorForm.addValidationRule('isPaletteNameUnique', value =>
@@ -29,10 +31,28 @@ class PaletteMetaForm extends Component {
             [e.target.name]: e.target.value
         })
     }
+    showEmojiPicker() {
+        this.setState({ stage: 'emoji' })
+    }
+    savePalette(emoji) {
+        const newPalette = {
+            paletteName: this.state.newPaletteName,
+            emoji: emoji.native
+        }
+        console.log(newPalette, this.props)
+        this.props.handleSubmit(newPalette)
+    }
     render() {
         const { newPaletteName } = this.state
-        const { hideForm, handleSubmit } = this.props
+        const { hideForm } = this.props
         return (
+            <div>
+            <Dialog open={this.state.stage === 'emoji'} onClose={hideForm} >
+                <DialogTitle id='form-dialog-title'>
+                    pick your pal.it emoji
+                </DialogTitle>
+                <Picker title='Choose your pal.it emoji!' onSelect={this.savePalette} />
+            </Dialog>
             <Dialog
             open={this.state.open}
             onClose={hideForm}
@@ -40,13 +60,12 @@ class PaletteMetaForm extends Component {
             >
             <DialogTitle id='form-dialog-title'>enter your pal.it name</DialogTitle>
             <ValidatorForm
-                onSubmit={() => handleSubmit(newPaletteName)}
+                onSubmit={this.showEmojiPicker}
                 >
             <DialogContent>
                 <DialogContentText>
                 Please enter a unique name for your pal.it!
                 </DialogContentText>
-                <Picker />
                 <TextValidator
                     label='Palette Name'
                     value={newPaletteName}
@@ -68,6 +87,7 @@ class PaletteMetaForm extends Component {
                 </DialogActions>
                 </ValidatorForm>
             </Dialog>
+            </div>
         )
     }
 }
