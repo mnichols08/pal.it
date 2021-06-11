@@ -9,6 +9,7 @@ class PaletteIndex extends Component {
     this.props.history.push(`/palette/${id}`)
   }
   render() {
+    console.log(this.props)
     const { palettes, classes } = this.props
     return (
       <div className={classes.root}>
