@@ -1,5 +1,4 @@
 import { withStyles } from '@material-ui/styles'
-import { auto } from 'async'
 import queries from '../mediaqueries'
 
 const styles = {

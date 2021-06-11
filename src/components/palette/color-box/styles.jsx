@@ -20,11 +20,11 @@ const styles = {
       },
       [queries.down('md')]: {
         width: "50%",
-        height: props => (props.showingFullPalette ? "10%" : "20%")
+        height: props => (props.showingFullPalette ? "20%" : "30%")
       },
       [queries.down('xs')]: {
         width: "100%",
-        height: props => (props.showingFullPalette ? "5%" : "10%")
+        height: props => (props.showingFullPalette ? "10%" : "10%")
       }
       
     },
