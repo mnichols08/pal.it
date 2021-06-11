@@ -98,20 +98,22 @@ class NewPaletteForm extends Component {
                         </IconButton>
                     </div>
                     <Divider />
-                    <Typography variant='h4'>design Your pal.it</Typography>
-                    <div>
-                        <Button variant='contained' color='secondary' onClick={this.clearColors}>
-                            Clear Palette
-                        </Button>
-                        <Button variant='contained' color='primary' onClick={this.addRandomColor} disabled={paletteIsFull}>
-                            Random Color
-                        </Button>
+                    <div className={classes.container} >
+                        <Typography variant='h4' gutterBottom>design Your pal.it</Typography>
+                        <div className={classes.buttons}>
+                            <Button variant='contained' color='secondary' onClick={this.clearColors} className={classes.button}>
+                                Clear Palette
+                            </Button>
+                            <Button variant='contained' color='primary' onClick={this.addRandomColor} disabled={paletteIsFull} className={classes.button}>
+                                Random Color
+                            </Button>
+                        </div>
+                        <ColorPickerForm 
+                            paletteIsFull={paletteIsFull}
+                            addNewColor={this.addNewColor}
+                            colors={colors}
+                        />
                     </div>
-                    <ColorPickerForm 
-                        paletteIsFull={paletteIsFull}
-                        addNewColor={this.addNewColor}
-                        colors={colors}
-                    />
                 </Drawer>
                 <main className={classNames(classes.content, {
                     [classes.contentShift]: open

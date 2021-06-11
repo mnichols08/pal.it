@@ -5,9 +5,9 @@ import classNames from 'classnames'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import MenuIcon from '@material-ui/icons/Menu'
-import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
+import Typography from '@material-ui/core/Typography'
+import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import Button from '@material-ui/core/Button'
 
 import PaletteMetaForm from './meta-form'
@@ -34,7 +34,6 @@ class PaletteFormNav extends Component {
     }
     render() {
         const { classes, open, handleSubmit, palettes } = this.props
-        const { newPaletteName } = this.state
         return (
         <div className={classes.root}>
         <CssBaseline />
@@ -43,7 +42,7 @@ class PaletteFormNav extends Component {
         })}>
             <Toolbar disableGutters={!open}>
                 <IconButton color='inherit' aria-label='Open drawer' onClick={this.props.handleDrawerOpen} className={classNames(classes.menuButton, open && classes.hide )}>
-                    <MenuIcon />
+                    <ChevronRightIcon />
                 </IconButton>
                 <Typography variant='h6' color='inherit' noWrap>
                     create a pal.it

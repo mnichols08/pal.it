@@ -54,7 +54,7 @@ class ColorPickerForm extends Component {
                             name='newColorName'
                             value={newColorName}
                             className={classes.colorNameInput}
-                            placeHolder='Color Name'
+                            placeholder='Color Name'
                             variant='filled'
                             margin='normal'
                             onChange={this.handleChange}
