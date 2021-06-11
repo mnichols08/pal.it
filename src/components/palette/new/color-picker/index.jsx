@@ -8,7 +8,7 @@ import styles from './styles'
 class ColorPickerForm extends Component {
     constructor(props) {
         super(props)
-        this.state = { currentColor: '#800000', newColorName: '' }
+        this.state = { currentColor: '#800000', newColorName: "" }
         this.updateCurrentColor = this.updateCurrentColor.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -37,7 +37,7 @@ class ColorPickerForm extends Component {
             name: this.state.newColorName
         }
         this.props.addNewColor(newColor)
-        this.setState({ newColorName: '' })
+        this.setState({ newColorName: "" })
     }
     render() {
         const { paletteIsFull, classes } = this.props
