@@ -1,4 +1,5 @@
 import { withStyles } from '@material-ui/core/styles'
+import queries from '../../mediaqueries'
 
 import { drawerWidth } from '../constants'
 
@@ -35,10 +36,17 @@ const styles = theme => ({
       marginRight: "1rem",
       "& a": {
         textDecoration: "none"
+      },
+      [queries.down('xs')]: {
+          marginRight: '.5rem'
       }
     },
     button: {
-      margin: "0 0.5rem"
+      margin: "0 0.5rem",
+      [queries.down('xs')]: {
+          padding: '.3rem',
+          margin: '0 .2rem'
+      }
     }
 })
 
