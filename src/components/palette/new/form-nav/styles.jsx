@@ -1,6 +1,7 @@
 import { withStyles } from '@material-ui/core/styles'
 
-const drawerWidth = 400
+import { drawerWidth } from '../constants'
+
 const styles = theme => ({
     root: {
         display: "flex"
