@@ -19,9 +19,9 @@ class PaletteFormNav extends Component {
         this.handleChange = this.handleChange.bind(this)
     }
     componentDidMount() {
-        ValidatorForm.addValidationRule('isPaletteNameUnique', val =>
+        ValidatorForm.addValidationRule('isPaletteNameUnique', value =>
         this.props.palettes.every(
-            ({ paletteName }) => paletteName.toLowerCase() !== val.toLowerCase()
+            ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
         ))
     }
     handleChange(e) {
@@ -33,9 +33,9 @@ class PaletteFormNav extends Component {
         const { classes, open, handleSubmit } = this.props
         const { newPaletteName } = this.state
         return (
-        <div>
+        <div className={classes.root}>
         <CssBaseline />
-        <AppBar position='fixed' className={classNames(classes.appBar, {
+        <AppBar position='fixed' color='default' className={classNames(classes.appBar, {
             [classes.appBarShift]: open
         })}>
             <Toolbar disableGutters={!open}>
@@ -43,8 +43,10 @@ class PaletteFormNav extends Component {
                     <MenuIcon />
                 </IconButton>
                 <Typography variant='h6' color='inherit' noWrap>
-                    Persistent Drawer
+                    create a pal.it
                 </Typography>
+            </Toolbar>
+            <div className={classes.navBtns}>
                 <ValidatorForm onSubmit={() => handleSubmit(newPaletteName)}>
                     <TextValidator 
                         label='Palette Name'
@@ -54,16 +56,16 @@ class PaletteFormNav extends Component {
                         validators={['required', 'isPaletteNameUnique']}
                         errorMessages={['Enter Palette Name', 'Name Already Taken']}
                     />
-                    <Button variant='contained' color='primary' type='submit'>
-                    Save pal.it
-                    </Button>
-                    <Link to='/'>
-                        <Button variant='contained' color='secondary'>
-                            Go Back
+                        <Button variant='contained' color='primary' type='submit'>
+                        Save pal.it
                         </Button>
-                    </Link>
                 </ValidatorForm>
-            </Toolbar>
+                <Link to='/'>
+                    <Button variant='contained' color='secondary'>
+                        Go Back
+                    </Button>
+                </Link>
+            </div>
         </AppBar>
         </div>
         )

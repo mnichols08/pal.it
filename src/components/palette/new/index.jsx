@@ -51,12 +51,11 @@ class NewPaletteForm extends Component {
         const randomColor = allColors[rand]
         this.setState({ colors: [...this.state.colors, randomColor ]})
     }
-    addNewColor() {
-        const newColor = {
-            name: this.state.newColorName,
-            color: this.state.currentColor
-        }
-        this.setState({ colors: [...this.state.colors, newColor], newColorName: "" })
+    addNewColor(newColor) {
+        this.setState({
+            colors: [...this.state.colors, newColor],
+            newColorName: ''
+        })
     }
     removeColor(name) {
         this.setState({
@@ -86,7 +85,7 @@ class NewPaletteForm extends Component {
         const paletteIsFull = colors.length >= maxColors
         return (
             <div className={classes.root}>
-                <PaletteFormNav open={open} classes={classes} palettes={palettes} handleSubmit={this.handleSubmit} handleDrawerOpen={this.handleDrawerOpen} />
+                <PaletteFormNav open={open} palettes={palettes} handleSubmit={this.handleSubmit} handleDrawerOpen={this.handleDrawerOpen} />
                 <Drawer
                     className={classes.drawer}
                     variant='persistent'
@@ -102,7 +101,7 @@ class NewPaletteForm extends Component {
                         </IconButton>
                     </div>
                     <Divider />
-                    <Typography variant='h4'>Design Your pal.it</Typography>
+                    <Typography variant='h4'>design Your pal.it</Typography>
                     <div>
                         <Button variant='contained' color='secondary' onClick={this.clearColors}>
                             Clear Palette

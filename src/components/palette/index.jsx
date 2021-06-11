@@ -16,7 +16,7 @@ class PaletteIndex extends Component {
         <div className={classes.container}>
           <nav className={classes.nav}>
             <h1>pal.it</h1>
-            <Link to='/palette/new'>Create Palette</Link>
+            <Link to='/palette/new'>create a pal.it</Link>
           </nav>
           <div className={classes.palettes}>
             {palettes.map(palette => (
