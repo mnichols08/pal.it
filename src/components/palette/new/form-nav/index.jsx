@@ -9,7 +9,6 @@ import MenuIcon from '@material-ui/icons/Menu'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import Button from '@material-ui/core/Button'
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 
 import PaletteMetaForm from './meta-form'
 import styles from './styles'
@@ -17,14 +16,14 @@ import styles from './styles'
 class PaletteFormNav extends Component {
     constructor(props) {
         super(props)
-        this.state = { newPaletteName: "" }
+        this.state = { newPaletteName: "", formShowing: false }
         this.handleChange = this.handleChange.bind(this)
+        this.showForm = this.showForm.bind(this)
     }
-    componentDidMount() {
-        ValidatorForm.addValidationRule('isPaletteNameUnique', value =>
-        this.props.palettes.every(
-            ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
-        ))
+    showForm() {
+        if (this.state.formShowing === false)
+        this.setState({ formShowing: true })
+        else this.setState({ formShowing: false })
     }
     handleChange(e) {
         this.setState({
@@ -49,14 +48,22 @@ class PaletteFormNav extends Component {
                 </Typography>
             </Toolbar>
             <div className={classes.navBtns}>
-                <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} />
                 <Link to='/'>
                     <Button variant='contained' color='secondary'>
                         Go Back
                     </Button>
                 </Link>
+                <Button
+                    variant='contained'
+                    color='primary'
+                    onClick={this.showForm}
+                    className={classes.button}
+                    >
+                    Save
+                </Button>
             </div>
         </AppBar>
+        { this.state.formShowing && ( <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} /> ) }
         </div>
         )
     }

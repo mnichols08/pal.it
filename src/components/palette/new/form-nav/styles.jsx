@@ -26,7 +26,15 @@ const styles = theme => ({
         marginLeft: 12,
         marginRight: 20
         },
-        navBtns: {}
+        navBtns: {
+            marginRight: '1rem',
+            '& a': {
+                textDecoration: 'none'
+            }
+        },
+        button: {
+            margin: '0 .5rem'
+        }
 })
 
 export default withStyles(styles, {withTheme: true })
