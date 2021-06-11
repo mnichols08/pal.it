@@ -1,4 +1,5 @@
 import { withStyles } from '@material-ui/styles'
+import queries from '../mediaqueries'
 
 const styles = {
   Palette: {
@@ -37,6 +38,18 @@ const styles = {
       textTransform: "uppercase",
       border: "none",
       textDecoration: "none"
+    },
+    [queries.down('lg')]: {
+      width: '25%',
+      height: '33.3333%'
+    },
+    [queries.down('md')]: {
+      width: '50%',
+      height: '20%'
+    },
+    [queries.down('xs')]: {
+      width: '100%',
+      height: '10%'
     }
   }
 }
