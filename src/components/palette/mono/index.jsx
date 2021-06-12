@@ -4,7 +4,7 @@ import ColorBox from '../color-box'
 import Navbar from '../navbar'
 import PaletteFooter from '../footer'
 
-import styles from './styles'
+import styles from '../component/styles'
 
 class MonoPalette extends Component {
     constructor(props) {

@@ -1,5 +1,6 @@
 import { withStyles } from '@material-ui/styles'
 import chroma from 'chroma-js'
+import queries from '../mediaqueries'
 
 const styles = {
     ColorBox: {
@@ -12,7 +13,20 @@ const styles = {
       "&:hover button": {
         opacity: 1,
         cursor: "pointer"
+      },
+      [queries.down('lg')]: {
+        width: '25%',
+        height: props => (props.showingFullPalette ? '20%' : '33.3333%')
+      },
+      [queries.down('md')]: {
+        width: "50%",
+        height: props => (props.showingFullPalette ? "20%" : "30%")
+      },
+      [queries.down('xs')]: {
+        width: "100%",
+        height: props => (props.showingFullPalette ? "10%" : "10%")
       }
+      
     },
     copyText: {
       color: props =>
@@ -104,7 +118,10 @@ const styles = {
         textAlign: "center",
         marginBottom: "0",
         padding: "1rem",
-        textTransform: "uppercase"
+        textTransform: "uppercase",
+        [queries.down('xs')]: {
+          fontSize: '6rem'
+        }
       },
       "& p": {
         fontSize: "2rem",

@@ -1,4 +1,5 @@
 import { withStyles } from '@material-ui/styles'
+import queries from '../mediaqueries'
 
 const styles = {
   Navbar: {
@@ -39,7 +40,12 @@ const styles = {
       width: "13px",
       height: "13px",
       marginLeft: "-7px",
-      marginTop: "-3px"
+      marginTop: "-3px",
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    [queries.down('md')]: {
+      width: '150px',
     }
   },
   selectContainer: {
