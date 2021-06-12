@@ -26,6 +26,7 @@ class PaletteIndex extends Component {
     this.openDialog = this.openDialog.bind(this)
     this.closeDialog = this.closeDialog.bind(this)
     this.handleDelete =this.handleDelete.bind(this)
+    this.goToPalette = this.goToPalette.bind(this)
   }
   goToPalette(id) {
     this.props.history.push(`/palette/${id}`)
@@ -46,7 +47,7 @@ class PaletteIndex extends Component {
     return (
       <div className={classes.root}>
         <div className={classes.container}>
-          <nav className={classes.nav}>
+          <nav className={classes.nav}> 
             <h1>pal.it</h1>
             <Link to='/palette/new'>create a pal.it</Link>
           </nav>
@@ -58,8 +59,8 @@ class PaletteIndex extends Component {
                   id={palette.id}
                   key={palette.id}
                   openDialog={this.openDialog}
+                  goToPalette={this.goToPalette}
                   {...palette}
-                  handleClick={() => this.goToPalette(palette.id)}
                 />
               </CSSTransition>
             ))}
