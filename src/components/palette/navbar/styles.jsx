@@ -44,7 +44,7 @@ const styles = {
       justifyContent: 'center',
       alignItems: 'center'
     },
-    [queries.down('sm')]: {
+    [queries.down('md')]: {
       width: '150px',
     }
   },

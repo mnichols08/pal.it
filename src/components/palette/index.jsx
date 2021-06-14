@@ -58,8 +58,8 @@ class PaletteIndex extends Component {
                   key={palette.id}
                   id={palette.id}
                   openDialog={this.openDialog}
-                  goToPalette={this.goToPalette}
                   {...palette}
+                  goToPalette={this.goToPalette}
                 />
               </CSSTransition>
             ))}
