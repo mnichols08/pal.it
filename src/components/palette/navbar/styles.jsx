@@ -45,7 +45,13 @@ const styles = {
       alignItems: 'center'
     },
     [queries.down('md')]: {
-      width: '150px',
+      width: '200px',
+    },
+    [queries.down('sm')]: {
+      width: '145px',
+    },
+    [queries.down('xs')]: {
+      width: '125px',
     }
   },
   selectContainer: {
