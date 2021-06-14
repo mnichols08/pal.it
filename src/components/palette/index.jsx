@@ -57,7 +57,6 @@ class PaletteIndex extends Component {
                 <MiniPalette
                   key={palette.id}
                   id={palette.id}
-                  key={palette.id}
                   openDialog={this.openDialog}
                   goToPalette={this.goToPalette}
                   {...palette}

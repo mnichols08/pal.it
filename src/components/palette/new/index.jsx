@@ -9,9 +9,11 @@ import Button from '@material-ui/core/Button'
 import DragList from '../color-box/drag-list'
 import { arrayMove } from 'react-sortable-hoc'
 
+import seed from '../seed'
 import ColorPickerForm from './color-picker'
 import PaletteFormNav from './form-nav'
 import styles from './styles'
+
 
 class NewPaletteForm extends Component {
     static defaultProps = {
@@ -23,7 +25,7 @@ class NewPaletteForm extends Component {
             open: true,
             currentColor: '#800000',
             newColorName: '',
-            colors: this.props.palettes[Math.floor(Math.random()*this.props.palettes.length)].colors,
+            colors: seed[0].colors,
             newPaletteName: ''
         }
         this.addNewColor = this.addNewColor.bind(this)
