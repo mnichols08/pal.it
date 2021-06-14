@@ -83,9 +83,11 @@ class PaletteIndex extends Component {
               <ListItemText primary='Delete' />
             </ListItem>
             <ListItem button onClick={this.closeDialog}>
-              <Avatar style={{ backgroundColor: red[100], color: red[600] }}>
-                <CloseIcon />
-              </Avatar>
+              <ListItemAvatar>
+                <Avatar style={{ backgroundColor: red[100], color: red[600] }}>
+                  <CloseIcon />
+                </Avatar>
+              </ListItemAvatar>
               <ListItemText primary='Cancel' />
             </ListItem>
           </List>
