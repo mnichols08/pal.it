@@ -12,6 +12,7 @@ class ColorPickerForm extends Component {
         this.updateCurrentColor = this.updateCurrentColor.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.randomColor = this.randomColor.bind(this)
     }
     componentDidMount() {
         ValidatorForm.addValidationRule("isColorNameUnique", value =>
@@ -26,11 +27,15 @@ class ColorPickerForm extends Component {
     updateCurrentColor(newColor) {
         this.setState({ currentColor: newColor.hex })
     }
+    randomColor() {
+        console.log(this.state)
+    }
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
+
     handleSubmit() {
         const newColor = {
             color: this.state.currentColor,

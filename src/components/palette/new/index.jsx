@@ -34,6 +34,7 @@ class NewPaletteForm extends Component {
         this.removeColor = this.removeColor.bind(this)
         this.clearColors = this.clearColors.bind(this)
         this.addRandomColor = this.addRandomColor.bind(this)
+        this.generateRandomColor = this.generateRandomColor.bind(this)
     }
     handleDrawerOpen = () => {
         this.setState({ open: true })
@@ -52,6 +53,11 @@ class NewPaletteForm extends Component {
         var rand = Math.floor(Math.random() * allColors.length)
         const randomColor = allColors[rand]
         this.setState({ colors: [...this.state.colors, randomColor ]})
+    }
+    generateRandomColor(){
+        const randomHexColor = '#' + [...Array(6)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')
+        this.setState({ currentColor: randomHexColor })
+        // console.log(this.state)
     }
     addNewColor(newColor) {
         this.setState({
@@ -80,7 +86,7 @@ class NewPaletteForm extends Component {
     }
     render() {
         const { classes, maxColors, palettes } = this.props
-        const { open, colors } = this.state
+        const { open, currentColor, colors } = this.state
         const paletteIsFull = colors.length >= maxColors
         return (
             <div className={classes.root}>
@@ -106,11 +112,15 @@ class NewPaletteForm extends Component {
                             <Button variant='contained' color='secondary' onClick={this.clearColors} className={classes.button}>
                                 Clear Palette
                             </Button>
+                            <Button variant='contained' color='secondary' onClick={this.generateRandomColor} className={classes.button}>
+                                Generate Random Color
+                            </Button>
                             <Button variant='contained' color='primary' onClick={this.addRandomColor} disabled={paletteIsFull} className={classes.button}>
-                                Random Color
+                                Add Random Color
                             </Button>
                         </div>
                         <ColorPickerForm 
+                            currentColor={currentColor}
                             paletteIsFull={paletteIsFull}
                             addNewColor={this.addNewColor}
                             colors={colors}
