@@ -1,0 +1,43 @@
+{
+    "project": "Pal.it - A Pallette Creator",
+    "description": "Pal.it is a web application that allows users to create and save color palettes. Users can generate random color palettes, customize them, and save them for future reference. Pal.it provides a simple and intuitive interface for users to explore and experiment with different color combinations.",
+    "position": "Web Developer",
+    "image": "",
+    "link": "https://pal-it.onrender.com/",
+    "language": {
+      "reason": "React.js was used for its component-based architecture, which allows for modularity and reusability. Material-UI was selected for its pre-built components and theming capabilities, enabling us to create a visually appealing and responsive user interface.",
+      "language": ["react.js", "material-ui"]
+    },
+    "project_goal": [
+      {
+        "title": "Create Color Palettes",
+        "goal": "Generate random color palettes and customize them.",
+        "description": "Pal.it allows users to create color palettes by generating random colors and customizing them to suit their preferences. Users can experiment with different color combinations and save their favorite palettes for future use."
+      },
+      {
+        "title": "Save Color Palettes",
+        "goal": "Save color palettes for future reference.",
+        "description": "Users can save their favorite color palettes for future reference, enabling them to access and use their preferred color combinations in design projects."
+      },
+      {
+        "title": "Explore Color Palettes",
+        "goal": "Explore a variety of different color palettes and experiment with different combinations.",
+        "description": "Pal.it provides users with a platform to explore a variety of color palettes and experiment with different combinations. Users can discover new color schemes and create unique palettes to enhance their design projects."
+      },
+      {
+        "title": "Intuitive Interface",
+        "goal": "Provide a simple and intuitive interface for users to interact with the application.",
+        "description": "The application features a user-friendly interface that allows users to easily navigate and interact with the color palette creation tools. The intuitive design enhances the user experience and encourages users to explore and experiment with different color combinations."
+      }
+    ],
+    "visual_identification": {
+      "reason": "The visual identification of Pal.it was inspired by the concept of color palettes and the creative process of selecting and customizing colors. The color scheme, typography, and layout were chosen to reflect the application's purpose and functionality.",
+      "fonts": ["Segoe UI", "Roboto", "Oxygen"],
+      "colors": ["#ffffff", "#9834eb", "#3d2e4a"]
+    },
+    "challenge_solution": {
+      "challenge": "Our Minimum Viable Product (MVP) was to display a list of dinosaurs and their images. We faced challenges with data fetching and rendering, as well as implementing search functionality and chart display.",
+      "solution": " We overcame these challenges by collaborating effectively, leveraging our diverse skills, and utilizing modular JavaScript to enhance the app's functionality."
+    },
+    "wireframe": "image/1/wireframe/1.png"
+  }
