@@ -1,5 +1,6 @@
 {
     "project": "Pal.it - A Pallette Creator",
+    "date": "2021-05-31",
     "description": "Pal.it is a web application that allows users to create and save color palettes. Users can generate random color palettes, customize them, and save them for future reference. Pal.it provides a simple and intuitive interface for users to explore and experiment with different color combinations.",
     "position": "Web Developer",
     "image": "",
