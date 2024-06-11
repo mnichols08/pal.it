@@ -7,7 +7,7 @@
     "link": "https://pal-it.onrender.com/",
     "language": {
       "reason": "React.js was used for its component-based architecture, which allows for modularity and reusability. Material-UI was selected for its pre-built components and theming capabilities, enabling us to create a visually appealing and responsive user interface.",
-      "language": ["react.js", "material-ui"]
+      "language": ["react.js", "material-ui"] 
     },
     "project_goal": [
       {
